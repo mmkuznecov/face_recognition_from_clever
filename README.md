@@ -7,6 +7,6 @@ Based on the following project: https://github.com/ageitgey/face_recognition
 
 Firstly, you should make quadcopter "Clever 3", as described in [Copterexpress's gitbook](https://clever.copterexpress.com/ru/index.html) and check, if video streaming from picamera works correctly.
 
-## Requirements
+## Dependencies
 
-All requirements described in [original project](https://github.com/ageitgey/face_recognition).
+All dependencies described in [original project](https://github.com/ageitgey/face_recognition).
