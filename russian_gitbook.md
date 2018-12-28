@@ -12,7 +12,7 @@
 
 ```
 pip install face_recognition
-pip install opencv-python opencv-contrib-python
+pip install opencv-python
 ```
 Затем достаточно скачать сам скрипт из репозитория:
 
