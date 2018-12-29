@@ -8,6 +8,8 @@
 
 Первой задачей было найти алгоритм самого распознавания. В качестве пути решения проблемы было выбрано использовать [готовое API для Python](https://github.com/ageitgey/face_recognition). Данное API сочетает в себе ряд преимуществ: скорость и точность распознавания, а также простота использования.
 
+## Установка
+
 Для начала нужно установить все необходимые библиотеки:
 
 ```
@@ -44,6 +46,10 @@ for i in os.listdir('faces/'):
     known_face_names.append(i)
 ```
 ***Дополнение: все изображения хранятся в папке faces в формате name.jpg***
+
+<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/files/screen.jpg" width="50%">
+<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/faces/Mikhail.jpg" width="30%">
+<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/faces/Timofey.jpg" width="30%">
 
 Инициализируем некоторые переменные:
 
