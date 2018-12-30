@@ -31,6 +31,12 @@ import os
 import urllib.request
 import numpy as np
 ```
+***Данный кусок кода предназначен для Python 3. В Python 2.7 подключаем urllib2 вместо urllib:***
+
+```python
+import urllib2
+```
+
 Создаем список кодировок изображений и список имен:
 
 ```python
@@ -40,7 +46,7 @@ for i in os.listdir('faces/'):
 known_face_encodings=[]
 for i in faces_images:
     known_face_encodings.append(face_recognition.face_encodings(i)[0])
-known_face_names=[]
+known_face_names=[]url
 for i in os.listdir('faces/'):
     i=i.split('.')[0]
     known_face_names.append(i)
@@ -66,6 +72,15 @@ req = urllib.request.urlopen('http://192.168.11.1:8080/snapshot?topic=/main_came
 arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
 frame = cv2.imdecode(arr, -1)
 ```
+
+***Для Python 2.7:***
+
+```python
+req = urllib2.urlopen('http://192.168.11.1:8080/snapshot?topic=/main_camera/image_raw')
+arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+frame = cv2.imdecode(arr, -1)
+```
+
 Объяснение дальнейшего кода можно найти на github’е используемого API в комментариях к [следующему скрипту](https://github.com/ageitgey/face_recognition/blob/master/examples/facerec_from_webcam_faster.py)
 
 ## Использование
