@@ -82,4 +82,11 @@ python recog.py
 <img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/files/Mikhail_output.jpg" width="50%">
 <img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/files/Timofey_output.jpg" width="50%">
 
-TODO: Иллюстрации
+## Возможные трудности
+
+При запуске скрипта может выскочить следующая ошибка:
+```python
+    known_face_encodings.append(face_recognition.face_encodings(i)[0])
+IndexError: list index out of range
+```
+В этом случае постарайтесь переделать изображения  в папке faces, возможно из-за плохого качества программа не распознает лиц на изображениях.
