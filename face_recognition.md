@@ -12,16 +12,19 @@
 
 Для начала нужно установить все необходимые библиотеки:
 
-```
+```bash
 pip install face_recognition
 pip install opencv-python
 ```
+
 Затем скачать сам скрипт из репозитория:
 
-```
+```bash
 git clone https://github.com/mmkuznecov/face_recognition_from_clever.git
 ```
+
 ## Объяснение кода
+
 Подключаем библиотеки:
 
 ```python
@@ -31,6 +34,7 @@ import os
 import urllib.request
 import numpy as np
 ```
+
 ***Данный кусок кода предназначен для Python 3. В Python 2.7 подключаем urllib2 вместо urllib:***
 
 ```python
@@ -51,6 +55,7 @@ for i in os.listdir('faces/'):
     i=i.split('.')[0]
     known_face_names.append(i)
 ```
+
 ***Дополнение: все изображения хранятся в папке faces в формате name.jpg***
 
 ![screen](./files/screen.jpeg)
@@ -67,6 +72,7 @@ face_encodings = []
 face_names = []
 process_this_frame = True
 ```
+
 Берем изображение с сервера и преобразуем его в cv2 формат:
 
 ```python
@@ -91,19 +97,23 @@ frame = cv2.imdecode(arr, -1)
 
 Затем просто запускаем скрипт:
 
-```
+```bash
 python recog.py
 ```
+
 И на выходе:
 
 ![Mikhail_output](./files/Mikhail_output.jpeg)
+
 ![Timofey_output](./files/Timofey_output.jpeg)
 
 ## Возможные трудности
 
 При запуске скрипта может выскочить следующая ошибка:
+
 ```python
     known_face_encodings.append(face_recognition.face_encodings(i)[0])
 IndexError: list index out of range
 ```
+
 В этом случае постарайтесь переделать изображения  в папке faces, возможно из-за плохого качества программа не распознает лиц на изображениях.
