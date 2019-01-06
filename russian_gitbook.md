@@ -53,9 +53,9 @@ for i in os.listdir('faces/'):
 ```
 ***Дополнение: все изображения хранятся в папке faces в формате name.jpg***
 
-<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/files/screen.jpg" width="50%">
-<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/faces/Mikhail.jpg" width="30%">
-<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/faces/Timofey.jpg" width="30%">
+![screen](./files/screen.jpeg)
+![Mikhail](./files/Mikhail.jpeg)
+![Timofey](./files/Timofey.jpeg)
 
 Инициализируем некоторые переменные:
 
@@ -94,8 +94,8 @@ python recog.py
 ```
 И на выходе:
 
-<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/files/Mikhail_output.jpg" width="50%">
-<img src="https://github.com/mmkuznecov/face_recognition_from_clever/blob/master/files/Timofey_output.jpg" width="50%">
+![Mikhail_output](./files/Mikhail_output.jpeg)
+![Timofey_output](./files/Timofey_output.jpeg)
 
 ## Возможные трудности
 
