@@ -54,7 +54,9 @@ for i in os.listdir('faces/'):
 ***Дополнение: все изображения хранятся в папке faces в формате name.jpg***
 
 ![screen](./files/screen.jpeg)
+
 ![Mikhail](./files/Mikhail.jpeg)
+
 ![Timofey](./files/Timofey.jpeg)
 
 Инициализируем некоторые переменные:
