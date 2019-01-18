@@ -30,7 +30,6 @@ while True:
     frame=ccc.get_undistorted_image(frame,ccc.CLEVER_FISHEYE_CAM_640)
     height_unz, width_unz, depth_unz = frame.shape
     frame=cv2.resize(frame,(0,0), fx=(width_or/width_unz),fy=(height_or/height_unz))
-    height, width, depth = frame.shape
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
     rgb_small_frame = small_frame[:, :, ::-1]
 	
