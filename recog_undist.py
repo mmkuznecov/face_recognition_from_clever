@@ -27,7 +27,12 @@ while True:
     arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
     frame = cv2.imdecode(arr, -1)
     height_or, width_or, depth_or = frame.shape
-    frame=ccc.get_undistorted_image(frame,ccc.CLEVER_FISHEYE_CAM_640)
+    if height_or==240 and width_or==320:
+        frame=ccc.get_undistorted_image(frame,ccc.CLEVER_FISHEYE_CAM_320)
+    elif height_or==480 and width_or==640:
+        frame=ccc.get_undistorted_image(frame,ccc.CLEVER_FISHEYE_CAM_640)
+    else:
+        frame=ccc.get_undistorted_image(frame,input("Input your path to the .yaml file: "))
     height_unz, width_unz, depth_unz = frame.shape
     frame=cv2.resize(frame,(0,0), fx=(width_or/width_unz),fy=(height_or/height_unz))
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
