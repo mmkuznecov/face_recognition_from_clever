@@ -3,6 +3,32 @@ import cv2
 import os
 import urllib.request
 import numpy as np
+import argparse
+
+ap = argparse.ArgumentParser()
+ap.add_argument("-u", "--undist", type=bool,
+	help="using undistortion")
+args = vars(ap.parse_args())
+
+def undist(frame):
+    try:
+        import clever_cam_calibration.clevercamcalib as ccc
+    except ImportError:
+        print('Callibration package is not installed, more see at https://clever.copterexpress.com/ru/calibration.html')
+    else:
+        height_or, width_or, depth_or = frame.shape
+        if height_or==240 and width_or==320:
+            frame=ccc.get_undistorted_image(frame,ccc.CLEVER_FISHEYE_CAM_320)
+        elif height_or==480 and width_or==640:
+            frame=ccc.get_undistorted_image(frame,ccc.CLEVER_FISHEYE_CAM_640)
+        else:
+            frame=ccc.get_undistorted_image(frame,input("Input your path to the .yaml file: "))
+    return frame
+
+def add_faces(face_locations):
+    for i in face_locations:
+        cv2.imshow(i)
+
 
 
 faces_images=[]
@@ -16,7 +42,6 @@ for i in os.listdir('faces/'):
     i=i.split('.')[0]
     known_face_names.append(i)
 
-
 face_locations = []
 face_encodings = []
 face_names = []
@@ -27,12 +52,17 @@ while True:
     arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
     frame = cv2.imdecode(arr, -1)
 
+    if args['undist']:
+        frame = undist(frame)
+
     small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
     rgb_small_frame = small_frame[:, :, ::-1]
 
     if process_this_frame:
         face_locations = face_recognition.face_locations(rgb_small_frame)
+        
         face_encodings = face_recognition.face_encodings(rgb_small_frame, face_locations)
+        x = len(face_encodings)
 
         face_names = []
         for face_encoding in face_encodings:
@@ -42,6 +72,7 @@ while True:
             if True in matches:
                 first_match_index = matches.index(True)
                 name = known_face_names[first_match_index]
+                x-=1
 
             face_names.append(name)
 
@@ -64,3 +95,8 @@ while True:
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+    if cv2.waitKey(32):
+        print('{d} unknown faces on image.',x)
+        if input('Want to proceed?') in ['y','yes']:
+            add_faces()
